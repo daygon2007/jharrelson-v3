@@ -1,0 +1,35 @@
+{
+  "name": "personal-site-v3",
+  "version": "1.0.0",
+  "description": "This is the 3rd version of my personal site.",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-bower": "0.0.13",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-jshint": "^2.0.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-ruby-sass": "^2.0.6",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglify": "^1.5.3",
+    "jshint": "^2.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daygon2007/jharrelson-v3.git"
+  },
+  "author": "Jonathon Harrelson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daygon2007/jharrelson-v3/issues"
+  },
+  "homepage": "https://github.com/daygon2007/jharrelson-v3#readme"
+}
