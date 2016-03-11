@@ -1,0 +1,19 @@
+/*!
+Theme Name: Jonathon Harrelson Personal Theme V3
+Theme URI: http://jonathon-harrelson.com
+Author: Jonathon Harrelson
+Author URI: http://jonathon-harrelson.com
+Description: This is the 3rd version of my website because I'm never happy with what I've got. It also gives me a chance to practice new techniques that I've learned between projects.
+Version: 3.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700,300);
+$font-family-base: 'Raleway', sans-serif;
+// Import bootstrap and fontawesome
+@import "bootstrap";
+@import "font-awesome";
+
+@import "colors";
+@import "header";

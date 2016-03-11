@@ -7,6 +7,7 @@ var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
+var include = require("gulp-include");
 var browserSync = require('browser-sync').create();
 
 
@@ -28,7 +29,7 @@ var bower = {
 // Set source paths
 var src = {
     path: './src/',
-    js: '_js/**/*.js',
+    js: '_js/',
     images: '_img/**', //gulp will not detect new images if using absolute path "./src/img/**"
     sass: '_sass/**/*.scss',
     partials: '_scss/partials',
@@ -78,11 +79,9 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('js', function () {
-    gulp.src('_js/*.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('fail'))
+    gulp.src(src.js + 'main.js')
+        .pipe(include())
         .pipe(uglify())
-        .pipe(concat('main.js'))
         .pipe(plumber(plumberErrorHandler))
         .pipe(gulp.dest(dist.js));
 });
@@ -111,7 +110,7 @@ gulp.task('serve', ['js','sass','img'], function () {
           //  baseDir: "al",
         //},
 		//port:8888,
-        proxy: "localhost:8888/al",
+        proxy: "localhost:8888/personal",
 		reloadDelay: 3000,
         reloadDebounce: 500
     });
