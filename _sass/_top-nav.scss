@@ -1,0 +1,28 @@
+nav{
+    background: $purple;
+    a{
+        color:$white;
+        
+        &:hover{
+            color:$green;
+        }
+    }
+    .navbar-toggle{
+        background:$green;
+        border: $white thin solid;
+        
+        span{
+            background:$white;
+        }
+    }
+    h2{
+        color: #fff;
+        font-weight: bold;
+        font-size: 2rem;
+        display: inline-block !important;
+        line-height: 1rem;
+        margin-left: 1rem;
+        max-width:75%;
+        float:left;
+    }
+}
