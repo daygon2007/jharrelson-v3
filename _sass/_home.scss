@@ -1,0 +1,83 @@
+body{
+	position:relative;
+}
+#contact-section, #portfolio-section, #start, #passion-section{
+	position:fixed;
+	height:100vh;
+	width:100vw;
+	min-height:100vh;
+	background-size: cover;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+}
+.content-area{
+	position:relative;
+	height:100vh;
+	width:100vw;
+}
+#start{
+	left:0;
+    z-index:9999;
+    
+	.intro-computer{
+		position:relative;
+		max-width:1122px;
+		max-height: 904px;
+		height:100%;
+		width:100%;
+		margin: 0 auto;
+		top:0;
+		> img{
+			padding-bottom:150px;
+		}
+		.logo{
+			position:absolute;
+			top:50%;
+			left:25%;
+			transform:translate(-25%, -50%);
+			blockquote{
+				border:none;
+				color:#eee;
+			}
+		}
+	}
+}
+#portfolio-section{
+	//background-color:$purple;
+    background: url('images/start_bg_2.jpg') center center;
+    background-size:cover;
+	color:$white;
+	p{
+		font-size:5rem;
+		position:absolute;
+		top:50%;
+		left:50%;
+		transform:translate(-50%,-50%);
+		width:100%;
+		text-align:center;
+		text-transform:uppercase;
+	}
+}
+#passion-section{
+    text-align: center;
+    h2{
+        margin-top:25vh;
+    }
+    > img{
+        position:absolute;
+        width:100%;
+        height:100%;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+    }
+    .logos{
+        
+        img{
+            
+        }
+    }
+}

@@ -10,3 +10,4 @@
 // Custom Modules maybe some Angular?!?!?!?!
 
 //=include skrollr-init.js
+//=include auto-scroll.js

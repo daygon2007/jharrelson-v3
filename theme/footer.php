@@ -10,7 +10,10 @@
  */
 
 ?>
-
+<?php
+    if (is_page('intro')){
+        // nothing
+    }else{ ?>
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
@@ -21,7 +24,7 @@
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
-
+<?php } ?>
 <?php wp_footer(); ?>
 
 </body>

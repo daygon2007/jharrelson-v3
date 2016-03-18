@@ -9,7 +9,7 @@ var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
 var include = require("gulp-include");
 var browserSync = require('browser-sync').create();
-
+var autoprefixer = require('gulp-autoprefixer');
 
 var plumberErrorHandler = { errorHandler: notify.onError({
     title: 'Gulp',
@@ -67,7 +67,10 @@ gulp.task('sass', function () {
         ],
         outputStyle: 'compressed'
     }))
-    
+    .pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
     .on("error", notify.onError(function (error) {
         return "Error: " + error.message;
     }))
@@ -89,7 +92,7 @@ gulp.task('js', function () {
 gulp.task('img', function() {
   gulp.src('_img/**/*.{png,jpg,gif}')
     .pipe(imagemin({
-      optimizationLevel: 5,
+      optimizationLevel: 1,
       progressive: true
     }))
     .pipe(plumber(plumberErrorHandler))
