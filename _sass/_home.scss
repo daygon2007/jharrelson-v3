@@ -43,6 +43,26 @@ body{
 			}
 		}
 	}
+    @media (max-width: $screen-sm-min){
+            .intro-computer{
+                background:$black;
+                > img{
+                    display:none;
+                }
+                .logo{
+                    left:0%;
+                    transform: translateY(-50%) scale(.5);
+                    text-align: center;
+                    blockquote{
+                        font-size:1.2em;
+                    }
+                    .button{
+                        font-size:1.5em;
+                        display:block;
+                    }
+                }
+            }
+        }
 }
 #portfolio-section{
 	//background-color:$purple;
@@ -79,5 +99,9 @@ body{
         img{
             
         }
+    }
+    #skrollr-body{
+        width:100vw;
+        height: 100vh;
     }
 }
