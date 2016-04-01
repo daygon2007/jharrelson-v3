@@ -112,8 +112,8 @@ gulp.task('serve', ['js','sass','img'], function () {
 		//server: {
           //  baseDir: "al",
         //},
-		//port:8888,
-        proxy: "localhost:8888/personal",
+		port:8888,
+        //proxy: "localhost:8888/personal",
 		reloadDelay: 1000,
         reloadDebounce: 500
     });

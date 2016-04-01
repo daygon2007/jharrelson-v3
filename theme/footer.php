@@ -13,7 +13,8 @@
 <?php
     if (is_page('intro')){
         // nothing
-    }else{ ?>
+    }else{ 
+?>
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">

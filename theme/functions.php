@@ -195,7 +195,7 @@ function contactForm() {
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
-                <form class="form-horizontal" method="post">
+                <form class="form-horizontal" method="post" id="contact-form">
                     <fieldset>
                         <legend class="text-center header">Contact Me</legend>
 
@@ -235,7 +235,7 @@ function contactForm() {
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                <button type="submit" class="btn btn-primary btn-lg" id="contact-submit">Submit</button>
                             </div>
                         </div>
                     </fieldset>
@@ -255,9 +255,12 @@ function contactForm_send(){
     $message = sanitize_text_field($_POST['message']);
 	$to = get_option('admin_email');
     
-    if( wp_mail($to, "Name:".$name, $message, "From:".$email)){
+    if( mail($to, "Name:".$name, $message, "From:".$email)){
         echo "Your Message Sent Successfully";
     }else{
         echo "Something went wrong please try again";
     }
+    die();
 }
+add_action('wp_ajax_contactForm_send', 'contactForm_send');
+add_action('wp_ajax_nopriv_contactForm_send', 'contactForm_send');
