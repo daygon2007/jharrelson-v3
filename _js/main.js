@@ -11,3 +11,5 @@
 
 //=include skrollr-init.js
 //=include auto-scroll.js
+//=include loader.js
+//=include contact-form.js

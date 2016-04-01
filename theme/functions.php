@@ -120,10 +120,20 @@ function jonathon_harrelson_v3_scripts() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array(), '20151215', true );
+    
+    wp_enqueue_script( 'recaptcha-api', 'https://www.google.com/recaptcha/api.js', array(), null, true );
+    
+    wp_localize_script('main', 'ajax_object', array('ajaxurl' => admin_url('admin-ajax.php'),));
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+    add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
+function add_async_attribute($tag, $handle) {
+    if ( 'recaptcha-api' !== $handle )
+        return $tag;
+    return str_replace( ' src', ' defer sync src', $tag );
+}
 }
 add_action( 'wp_enqueue_scripts', 'jonathon_harrelson_v3_scripts' );
 
@@ -156,3 +166,98 @@ require get_template_directory() . '/inc/jetpack.php';
 	* Load Bootstrap NavWalker
 	*/
 require_once('wp_bootstrap_navwalker.php');
+
+/**
+    * Contact Form
+    */
+// grab recaptcha library
+require_once "recaptchalib.php";
+// your secret key
+$secret = "6LddFgoTAAAAALZQWeg7vif3179mdISRDCs_302S";
+ 
+// empty response
+$response = null;
+ 
+// check secret key
+$reCaptcha = new ReCaptcha($secret);
+
+// Check Submitted recaptcha response
+if ($_POST["g-recaptcha-response"]) {
+    $response = $reCaptcha->verifyResponse(
+        $_SERVER["REQUEST_URI"],
+        $_POST["g-recaptcha-response"]
+    );
+}
+
+function contactForm() {
+    return '
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form class="form-horizontal" method="post">
+                    <fieldset>
+                        <legend class="text-center header">Contact Me</legend>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="fname" name="name" type="text" placeholder="First Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
+                            <div class="col-md-8">
+                                <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>';
+}
+
+add_shortcode('contact-form', 'contactForm');
+
+function contactForm_send(){
+    $name = sanitize_text_field($_POST['name']);
+	$email = sanitize_email($_POST['email']);
+	$phone = sanitize_text_field($_POST['phone']);
+    $message = sanitize_text_field($_POST['message']);
+	$to = get_option('admin_email');
+    
+    if( wp_mail($to, "Name:".$name, $message, "From:".$email)){
+        echo "Your Message Sent Successfully";
+    }else{
+        echo "Something went wrong please try again";
+    }
+}

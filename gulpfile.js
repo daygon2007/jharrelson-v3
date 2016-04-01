@@ -114,7 +114,7 @@ gulp.task('serve', ['js','sass','img'], function () {
         //},
 		//port:8888,
         proxy: "localhost:8888/personal",
-		reloadDelay: 3000,
+		reloadDelay: 1000,
         reloadDebounce: 500
     });
 });
