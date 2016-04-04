@@ -16,6 +16,17 @@
         text-decoration: none;
     }
 }
+.ghost-dark{
+    border: thin solid $black;
+    color: $black;
+    background: rgba(0,0,0,0);
+    transition: ease-in-out .25s;
+    &:hover{
+        background:$black;
+        color:$white;
+        text-decoration: none;
+    }
+}
 .round{
     border-radius:100%;
 }

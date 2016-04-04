@@ -1,4 +1,5 @@
 $('#contact-submit').click(function(){
+    $('#contact-form').validate();
     var data = {};
     //var data = $('contact-form').serialize();
     var form_elements = $('.form-control');
@@ -11,8 +12,8 @@ $('#contact-submit').click(function(){
         data: data,
         dataType: 'json',
         success: function(){
-            $('#contact-form').hide();
-            console.log(data);
+            $('.form-group').fadeOut('fast');
+            $('.success').show('slow');
         }
     });
     return false;

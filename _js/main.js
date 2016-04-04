@@ -1,5 +1,6 @@
 // jQuery
 //=include ../bower_components/jquery/dist/jquery.js
+//=include jquery.validate.min.js
 
 // Vendor Stuff
 //=include modernizer-custom.js

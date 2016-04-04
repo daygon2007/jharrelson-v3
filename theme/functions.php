@@ -202,34 +202,41 @@ function contactForm() {
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="fname" name="name" type="text" placeholder="First Name" class="form-control">
+                                <input id="name" name="name" type="text" placeholder="First Name" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">
+                                <input id="name" name="name" type="text" placeholder="Last Name" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
+                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">
+                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="subject" name="subject" type="text" placeholder="Subject" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
                             <div class="col-md-8">
-                                <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7"></textarea>
+                                <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7" required></textarea>
                             </div>
                         </div>
 
@@ -239,6 +246,13 @@ function contactForm() {
                             </div>
                         </div>
                     </fieldset>
+                    <div class="success">
+                        <div class="alert alert-success">
+                            <p>Your Message has successfully been sent feel free to scope out more of my site in the mean time.</p>
+                            <a class="ghost-dark button" href="portfolio">Portfolio</a>
+                            <a class="ghost-dark button" href="blog">Portfolio</a>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -249,18 +263,46 @@ function contactForm() {
 add_shortcode('contact-form', 'contactForm');
 
 function contactForm_send(){
+    $headers = "From: " . $name . "\r\n";
+    $headers .= "Reply-To: ". $email . "\r\n";
+    $headers .= "CC: daygon07@gmail.com\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+    
+    $message = '<html><body>';
+    $message .= '<h1>Email from Personal Website</h1>';
+    $message .= '<p>' . $name . ' wants to know about '. $subject . '<p>';
+    $message .= '<p>' . $message . '</p>';
+    
     $name = sanitize_text_field($_POST['name']);
 	$email = sanitize_email($_POST['email']);
 	$phone = sanitize_text_field($_POST['phone']);
+    $subject = sanitize_text_field($_POST['subject']);
     $message = sanitize_text_field($_POST['message']);
 	$to = get_option('admin_email');
     
-    if( mail($to, "Name:".$name, $message, "From:".$email)){
-        echo "Your Message Sent Successfully";
-    }else{
-        echo "Something went wrong please try again";
+    if(isset($_POST)){
+        if (empty($name)){
+            echo 'Please Enter Name';
+        }
+        if (empty($email)){
+            echo 'Please Enter Valid Email';
+        }
+        if (empty($phone)){
+            echo 'Please Enter Phone Number';
+        }
+        if (empty($subject)){
+            echo 'Please Enter Name';
+        }
+        if (empty($message)){
+            echo 'Please Enter Name';
+        }
     }
-    die();
+    
+
+    
+    
+    wp_mail($to, $subject, $message, $headers);
 }
 add_action('wp_ajax_contactForm_send', 'contactForm_send');
 add_action('wp_ajax_nopriv_contactForm_send', 'contactForm_send');
