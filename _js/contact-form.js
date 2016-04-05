@@ -9,12 +9,17 @@ $('#contact-submit').click(function(){
     $.ajax({
         type: 'POST',
         url: ajax_object.ajaxurl,
+        action: 'contactForm_send',
         data: data,
         dataType: 'json',
         success: function(){
             $('.form-group').fadeOut('fast');
             $('.success').show('slow');
-        }
+            console.log(data);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) { 
+        alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+    }  
     });
     return false;
-})
+});

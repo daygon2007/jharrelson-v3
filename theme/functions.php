@@ -303,6 +303,7 @@ function contactForm_send(){
     
     
     wp_mail($to, $subject, $message, $headers);
+
 }
 add_action('wp_ajax_contactForm_send', 'contactForm_send');
 add_action('wp_ajax_nopriv_contactForm_send', 'contactForm_send');
