@@ -11,8 +11,7 @@
 </head>
 <body>
     <div id="skrollr-body"></div>
-    <div class="loader">
-<img src="http://deelay.me/0/https://www.planwallpaper.com/static/images/awesome-desktop-backgrounds-hd-star-trek-background-high.jpg" style="display:none;"></div>
+    <div class="loader"></div>
     <div id="start" data-0="display:block;" data-600="display:none">
 	<div class="intro-computer" data-0="transform:scale(1.75,1.75);" data-300="transform:scale(.5,.5); top:0%; opacity:1; z-index:9999;" data-600="top:-100%; opacity:0; z-index:1;">
 		<img src="<?php bloginfo(template_directory); ?>/images/intro.png" alt="Jonathon Harrelson desktop background image">
@@ -71,8 +70,6 @@
 </div>
 
 <div id="contact-section" data-0="display:none;" data-15100="display:block; opacity:0;" data-15400="opacity:1;">
-	Some Sweet Text and a contact form here...
-    <br><br><br><br>
     <?php echo do_shortcode('[contact-form]'); ?>
 </div>
 <!-- End Contact Section -->

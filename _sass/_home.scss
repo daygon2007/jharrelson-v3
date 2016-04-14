@@ -8,7 +8,7 @@ body{
 	width: 100%;
 	height: 100%;
 	z-index: 999999999;
-	background: url('http://bradsknutson.com/wp-content/uploads/2013/04/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
+	background: url('images/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
 }
 #contact-section, #portfolio-section, #start, #passion-section{
 	position:fixed;
@@ -20,6 +20,7 @@ body{
 	bottom:0;
 	left:0;
 	right:0;
+    //overflow-y: scroll;
 }
 .content-area{
 	position:relative;
@@ -90,7 +91,9 @@ body{
 	}
 }
 #passion-section{
-
+    @media (max-width: $screen-sm-min){
+        overflow-y: scroll;
+    }
     h2,h3{
         text-align:center;
     }
@@ -112,11 +115,22 @@ body{
         overflow-y: hidden;
         text-align: center;
         align-content: space-around;
+        @media (max-width: $screen-sm-min){
+                flex-flow: wrap column;
+            }
         img{
             flex-basis: auto;
             @media (max-width: $screen-sm-min){
-                max-width:50%;
+                //max-width:50%;
+                width:100%;
+                margin-bottom:15px;
             }
         }
+    }
+}
+#contact-section{
+    overflow-y: scroll;
+    .well{
+        margin-top:25px;
     }
 }

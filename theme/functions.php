@@ -119,7 +119,9 @@ function jonathon_harrelson_v3_scripts() {
     
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array(), '20151215', true );
+    wp_enqueue_script( 'leadsius', 'http://app.leadsius.com/bundles/leadsiusplatform/leadsius/New-Form-Builder/public/lswf.js?v=20160414', array(), null, true );
+    
+    wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array(), '20151215', true );
     
     wp_enqueue_script( 'recaptcha-api', 'https://www.google.com/recaptcha/api.js', array(), null, true );
     
@@ -166,28 +168,41 @@ require get_template_directory() . '/inc/jetpack.php';
 	* Load Bootstrap NavWalker
 	*/
 require_once('wp_bootstrap_navwalker.php');
+/**
+    *Disable unneeded stuff
+    */
+function disable_wp_emojicons() {
+
+  // all actions related to emojis
+  remove_action( 'admin_print_styles', 'print_emoji_styles' );
+  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+  remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+  remove_action( 'wp_print_styles', 'print_emoji_styles' );
+  remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+  remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+  remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+
+  // filter to remove TinyMCE emojis
+  add_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );
+}
+add_action( 'init', 'disable_wp_emojicons' );
+
+function disable_emojicons_tinymce( $plugins ) {
+  if ( is_array( $plugins ) ) {
+    return array_diff( $plugins, array( 'wpemoji' ) );
+  } else {
+    return array();
+  }
+}
+add_action( 'widgets_init', 'my_remove_recent_comments_style' );
+function my_remove_recent_comments_style() {
+	global $wp_widget_factory;
+	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'  ) );
+}
 
 /**
     * Contact Form
     */
-// grab recaptcha library
-require_once "recaptchalib.php";
-// your secret key
-$secret = "6LddFgoTAAAAALZQWeg7vif3179mdISRDCs_302S";
- 
-// empty response
-$response = null;
- 
-// check secret key
-$reCaptcha = new ReCaptcha($secret);
-
-// Check Submitted recaptcha response
-if ($_POST["g-recaptcha-response"]) {
-    $response = $reCaptcha->verifyResponse(
-        $_SERVER["REQUEST_URI"],
-        $_POST["g-recaptcha-response"]
-    );
-}
 
 function contactForm() {
     return '
@@ -195,65 +210,10 @@ function contactForm() {
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
-                <form class="form-horizontal" method="post" id="contact-form">
-                    <fieldset>
-                        <legend class="text-center header">Contact Me</legend>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="name" name="name" type="text" placeholder="First Name" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="name" name="name" type="text" placeholder="Last Name" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="subject" name="subject" type="text" placeholder="Subject" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
-                            <div class="col-md-8">
-                                <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7" required></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg" id="contact-submit">Submit</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <div class="success">
-                        <div class="alert alert-success">
-                            <p>Your Message has successfully been sent feel free to scope out more of my site in the mean time.</p>
-                            <a class="ghost-dark button" href="portfolio">Portfolio</a>
-                            <a class="ghost-dark button" href="blog">Portfolio</a>
-                        </div>
-                    </div>
-                </form>
+            <fieldset>
+                <legend>Contact Me</legend>
+            </fieldset>
+                <div id="RWhZZ01nPT0="></div>
             </div>
         </div>
     </div>
@@ -261,49 +221,3 @@ function contactForm() {
 }
 
 add_shortcode('contact-form', 'contactForm');
-
-function contactForm_send(){
-    $headers = "From: " . $name . "\r\n";
-    $headers .= "Reply-To: ". $email . "\r\n";
-    $headers .= "CC: daygon07@gmail.com\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-    
-    $message = '<html><body>';
-    $message .= '<h1>Email from Personal Website</h1>';
-    $message .= '<p>' . $name . ' wants to know about '. $subject . '<p>';
-    $message .= '<p>' . $message . '</p>';
-    
-    $name = sanitize_text_field($_POST['name']);
-	$email = sanitize_email($_POST['email']);
-	$phone = sanitize_text_field($_POST['phone']);
-    $subject = sanitize_text_field($_POST['subject']);
-    $message = sanitize_text_field($_POST['message']);
-	$to = get_option('admin_email');
-    
-    if(isset($_POST)){
-        if (empty($name)){
-            echo 'Please Enter Name';
-        }
-        if (empty($email)){
-            echo 'Please Enter Valid Email';
-        }
-        if (empty($phone)){
-            echo 'Please Enter Phone Number';
-        }
-        if (empty($subject)){
-            echo 'Please Enter Name';
-        }
-        if (empty($message)){
-            echo 'Please Enter Name';
-        }
-    }
-    
-
-    
-    
-    wp_mail($to, $subject, $message, $headers);
-
-}
-add_action('wp_ajax_contactForm_send', 'contactForm_send');
-add_action('wp_ajax_nopriv_contactForm_send', 'contactForm_send');
