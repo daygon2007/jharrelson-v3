@@ -1,7 +1,13 @@
-.well{
+.contact-full{
+    min-height: 550px;
     fieldset{
         text-align: center;
     }
+}
+.well{
+   fieldset{
+        text-align: center;
+    } 
 }
 #ls-content{
     
@@ -61,6 +67,19 @@
             background:$black !important;
             color:$white !important;
             text-decoration: none !important;
+        }
+    }
+    #lspopUp{
+        clear:both;
+    }
+}
+#small-contact{
+    
+    .ls-form-group{
+        
+        &:nth-of-type(5){
+            width:100%;
+            float:none;
         }
     }
 }

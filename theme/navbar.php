@@ -1,5 +1,5 @@
 <nav class="navbar" role="navigation">
-  <div class="container-fluid wrapper">
+  <div class="container wrapper">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <h2 class="visible-xs visible-sm">Jonathon Harrelson</h2>
@@ -28,8 +28,8 @@
                 'depth'             => 2,
                 'container'         => 'div',
                 'container_class'   => 'collapse navbar-collapse',
-        'container_id'      => 'bs-example-navbar-collapse-1',
-                'menu_class'        => 'nav navbar-nav col-lg-6',
+        'container_id'      => 'bs-example-navbar-collapse-1 col-lg-6 col-md-6',
+                'menu_class'        => 'nav navbar-nav',
                 'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
                 'walker'            => new wp_bootstrap_navwalker())
             );

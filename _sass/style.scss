@@ -9,16 +9,24 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,700,300);
-$font-family-base: 'Raleway', sans-serif;
+@import url(https://fonts.googleapis.com/css?family=Nunito|Open+Sans);
+$font-family-base: 'Open Sans', sans-serif;
 // Import bootstrap and fontawesome
 @import "bootstrap";
 @import "font-awesome";
 @import "animate";
 
+// Main Site Styles
 @import "colors";
-@import "home";
+@import "typography";
 @import "header";
 @import "buttons";
 @import "top-nav";
 @import "contact-form";
+@import "body";
+
+// Intro Page Styles
+@import "intro";
+
+// Home Page styles
+@import "home";

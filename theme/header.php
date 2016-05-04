@@ -1,15 +1,4 @@
-<?php
-/**
- * The header for our theme.
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package Jonathon_Harrelson_v3
- */
-
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -22,8 +11,10 @@
 
 <body <?php body_class(); ?>>
     <?php include('navbar.php'); ?>
-<div id="page skrollr-body" class="site">
     <header>
-	</header><!-- #masthead -->
-
-	<div id="content" class="site-content">
+        <div class="container">
+            <h1>I'm Jonathon</h1>
+            <h2>I Develop Websites & Create Emersive Web Experiences</h2>
+        </div>
+    </header>
+    <div id="content">

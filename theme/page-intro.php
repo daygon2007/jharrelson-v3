@@ -18,7 +18,7 @@
 		<div class="logo">
 			<img src="<?php bloginfo(template_directory); ?>/images/logo-white.png" alt="Jonathon Harrelson, Front-End Web Developer, Search Engin Optimization Specialist" />
 			<blockquote>
-				Front-End Web Developer & SEO Specilist
+				Front-End Web Developer & SEO Specialist
 			</blockquote>
             <a href="#" class="ghost button" id="scroll_down">View The Journey</a>
             <a href="<?php bloginfo('url'); ?>/home" class="ghost button">Enter My World</a>
@@ -44,8 +44,8 @@
     <h2 class="caps" data-8300="opacity:0; display:block;" data-8900="opacity:1;" data-9600="opacity:1;" data-9900="opacity:0;" data-13000="display:none;">Web Design and Development is my Passion</h2>
     <h3 data-8600="opacity:0;  display:block;" data-8900="opacity:1;" data-9600="opacity:1;" data-9900="opacity:0;"  data-13000="display:none;">I Love Turning this...</h3>
     <h3 data-10500="opacity:0; display:block;" data-10800="opacity:1;" data-11100="opacity:1;" data-11400="opacity:0;" data-13000="display:none;">Into this...</h3>
-    <img src="http://placehold.it/1920x1080?text=Awesome+Site+Image+For+Desktop" data-11400="opacity:0;" data-11700="opacity:1;" data-12700="opacity:1;" data-13000="opacity:0;" class="hidden-sm hidden-xs">
-    <img src="http://placehold.it/375x667?text=Awesome+Site+Image+For+Mobile" data-11400="opacity:0;" data-11700="opacity:1;" data-12700="opacity:1;" data-13000="opacity:0;" class="visible-sm visible-xs">
+    <img src="<?php bloginfo("template_directory"); ?>/images/versatech-marketing.jpg" data-11400="opacity:0;" data-11700="opacity:1;" data-12700="opacity:1;" data-13000="opacity:0;" class="hidden-sm hidden-xs">
+    <img src="<?php bloginfo("template_directory"); ?>/images/cyfair-animal-hospital_mobile.jpg" data-11400="opacity:0;" data-11700="opacity:1;" data-12700="opacity:1;" data-13000="opacity:0;" class="visible-sm visible-xs">
     <h3 data-13000="opacity:0;" data-13300="opacity:1;" id="programming-languages">Using these programming languages and platforms:</h3>
     <div class="logos container">
         <img src="<?php bloginfo(template_directory); ?>/images/HTML5_Logo_256.png" alt="HTML5 Developer" data-13300="margin-left:75%; opacity:0;" data-13400="margin-left:0; opacity:1">
@@ -70,7 +70,21 @@
 </div>
 
 <div id="contact-section" data-0="display:none;" data-15100="display:block; opacity:0;" data-15400="opacity:1;">
-    <?php echo do_shortcode('[contact-form]'); ?>
+    <div class="container">
+        <h2>Interested In My Mad Skills?</h2>
+        <p>Reach out to me by <span class="hidden-xs hidden-sm">filling out the form below</span><span class="visible-xs visible-sm">tapping on the contact button below</span>. I love hearing feedback on how I can improve aspects of my designs to make them more enjoyable.</p>
+        <div class="hidden-xs hidden-sm">
+            <?php echo do_shortcode('[contact-form]'); ?>
+        </div>
+        <div class="visible-xs visible-sm">
+            <a href="<?php bloginfo('url'); ?>/contact" class="button ghost-dark">Contact Me</a>
+        </div>
+        <h3>This was just my intro page, you should see the rest of my site.</h3>
+        <a href="<?php bloginfo('url'); ?>/home" class="button ghost-dark">Home</a>
+        <a href="<?php bloginfo('url'); ?>/portfolio" class="button ghost-dark"> Portfolio</a>
+        <a href="<?php bloginfo('url'); ?>/blog" class="button ghost-dark">Blog</a>
+        <a href="<?php bloginfo('url'); ?>/about-me" class="button ghost-dark">About Me</a>
+    </div>
 </div>
 <!-- End Contact Section -->
 <?php get_footer(); ?>

@@ -206,10 +206,10 @@ function my_remove_recent_comments_style() {
 
 function contactForm() {
     return '
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div class="well well-sm">
+            <div class="well well-sm contact-full">
             <fieldset>
                 <legend>Contact Me</legend>
             </fieldset>
