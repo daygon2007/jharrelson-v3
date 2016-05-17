@@ -18,13 +18,26 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'jonathon-harrelson-v3' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'jonathon-harrelson-v3' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'jonathon-harrelson-v3' ), 'jonathon-harrelson-v3', '<a href="http://jonathon-harrelson.com" rel="designer">Jonathon Harrelson</a>' ); ?>
-		</div><!-- .site-info -->
+		<div class="container">
+                <div class="col-md-4 social-nav">
+                    <ul>
+                        <li class="col-xs-1"><a href="https://www.facebook.com/jonathon.harrelson" target="_blank" title="My Facebook Page"><i class="fa fa-facebook"></i></a></li>
+                        <li class="col-xs-1"><a href="http://www.twitter.com/MrJHarrelson" target="_blank" title="My Twitter Feed"><i class="fa fa-twitter"></i></a></li>
+                        <li class="col-xs-1"><a href="https://plus.google.com/+JonathonHarrelson" target="_blank" title="My Google Plus Page"><i class="fa fa-google-plus"></i></a></li>
+                        <li class="col-xs-1"><a href="https://www.linkedin.com/in/jonathonharrelson" target="_blank" title="My LinkedIn Profile"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="col-xs-1"><a href="https://instagram.com/daygon2007/" target="_blank" title="My Instagram Pictures"><i class="fa fa-instagram"></i></a></li>
+                        <li class="col-xs-1"><a href="http://codepen.io/jharrelson/" target="_blank" title="My Playground"><i class="fa fa-codepen"></i></a></li>
+                        <li class="col-xs-1"><a href="https://github.com/daygon2007" target="_blank" title="My Repository"><i class="fa fa-github"></i></a></li>
+                </ul>
+                </div>
+                <div class="col-md-4">
+                    <a href ="<?php bloginfo('url'); ?>/credits">Special Recognition</a>
+                </div>
+                <div class="col-md-4">
+                    <p>Copyright <?php echo date('Y'); ?> - Jonathon Harrelson</p>
+                </div>
+        </div>
 	</footer><!-- #colophon -->
-</div><!-- #page -->
 <?php } ?>
 <?php wp_footer(); ?>
 <script type='text/javascript' id="__bs_script__">//<![CDATA[

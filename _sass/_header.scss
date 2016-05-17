@@ -2,11 +2,17 @@ header{
     background: $red;
     text-align: center;
     padding: 5rem;
+    @media (max-width: $screen-sm-min){
+        padding: 0;
+    }
     
     h1{
         color:$white;
         font-size: 5em;
         font-weight: bold;
+        @media (max-width: $screen-sm-min){
+            font-size:4em;
+        }
     }
     h2{
         color: $white;

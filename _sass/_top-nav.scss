@@ -2,9 +2,13 @@ nav{
     background: $purple;
     border-radius:0 !important;
     margin-bottom:0 !important;
-    .container{
+    .container-fluid{
         display: flex;
         align-items: center;
+        @media (max-width: $screen-sm-min){
+            display: block;
+            text-align:center;
+        }
     }
     a{
         color:$white;
@@ -51,10 +55,10 @@ nav{
         max-width:75%;
         float:left;
     }
-    .social-nav{
+}
+.social-nav{
         
-        ul{
-            list-style: none;
-        }
+    ul{
+        list-style: none;
     }
 }

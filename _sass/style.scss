@@ -19,11 +19,12 @@ $font-family-base: 'Open Sans', sans-serif;
 // Main Site Styles
 @import "colors";
 @import "typography";
+@import "body";
 @import "header";
+@import "footer";
 @import "buttons";
 @import "top-nav";
 @import "contact-form";
-@import "body";
 
 // Intro Page Styles
 @import "intro";

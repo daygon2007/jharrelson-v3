@@ -1,8 +1,7 @@
 <nav class="navbar" role="navigation">
-  <div class="container wrapper">
+  <div class="container-fluid wrapper">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-        <h2 class="visible-xs visible-sm">Jonathon Harrelson</h2>
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -10,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
     </div>
-    <div class="social-nav col-lg-6 hidden-sm hidden-xs">
+    <div class="social-nav col-md-6 hidden-xs hidden-sm">
     	<ul>
         	<li class="col-xs-1"><a href="https://www.facebook.com/jonathon.harrelson" target="_blank" title="My Facebook Page"><i class="fa fa-facebook"></i></a></li>
             <li class="col-xs-1"><a href="http://www.twitter.com/MrJHarrelson" target="_blank" title="My Twitter Feed"><i class="fa fa-twitter"></i></a></li>
@@ -27,8 +26,8 @@
                 'theme_location'    => 'primary',
                 'depth'             => 2,
                 'container'         => 'div',
-                'container_class'   => 'collapse navbar-collapse',
-        'container_id'      => 'bs-example-navbar-collapse-1 col-lg-6 col-md-6',
+                'container_class'   => 'collapse navbar-collapse col-md-6',
+        'container_id'      => 'bs-example-navbar-collapse-1',
                 'menu_class'        => 'nav navbar-nav',
                 'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
                 'walker'            => new wp_bootstrap_navwalker())

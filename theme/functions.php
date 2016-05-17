@@ -119,15 +119,24 @@ function jonathon_harrelson_v3_scripts() {
     
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 
-    wp_enqueue_script( 'leadsius', 'http://app.leadsius.com/bundles/leadsiusplatform/leadsius/New-Form-Builder/public/lswf.js?v=20160414', array(), null, true );
+    //wp_enqueue_script( 'leadsius', 'http://app.leadsius.com/bundles/leadsiusplatform/leadsius/New-Form-Builder/public/lswf.js?v=20160414', array(), null, true );
     
     wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array(), '20151215', true );
     
     wp_enqueue_script( 'recaptcha-api', 'https://www.google.com/recaptcha/api.js', array(), null, true );
     
     wp_localize_script('main', 'ajax_object', array('ajaxurl' => admin_url('admin-ajax.php'),));
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+    
+    wp_localize_script ('main', 'appInfo',
+                       array(
+                        'api_url'               => rest_get_url_prefix() . '/wp/v2/',
+                        'template_directory'    => get_template_directory_uri() .'/',
+                        'nonce'                 => wp_create_nonce( 'wp_rest'),
+                        'is_admin'              => current_user_can('administrator')
+                       )
+                    );
+    
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
     add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
@@ -168,6 +177,12 @@ require get_template_directory() . '/inc/jetpack.php';
 	* Load Bootstrap NavWalker
 	*/
 require_once('wp_bootstrap_navwalker.php');
+
+/**
+    *Disable Admin Bar
+    */
+add_filter('show_admin_bar', '__return_false');
+
 /**
     *Disable unneeded stuff
     */

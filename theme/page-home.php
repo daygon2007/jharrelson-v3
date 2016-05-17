@@ -7,7 +7,7 @@
             <?php $portfolio = new wp_query("cat=3&posts_per_page=3");
                while ( $portfolio -> have_posts() ) : $portfolio -> the_post(); ?>
                <div class="col-md-4 portfolio-item">
-                   <a href="<?php the_field('website_url') ?>" target="_blank">
+                   <a href="<?php the_permalink(); ?>">
                        <img src="<?php echo the_field('desktop_screen_shot'); ?>" alt="<?php the_title(); ?>">
                        <div class="portfolio-info">
                            <h4><?php the_title(); ?></h4>

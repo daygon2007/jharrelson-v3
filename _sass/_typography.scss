@@ -60,7 +60,7 @@ a{
         }
         &:hover{
             color:$green;
-            background: none !important;
+            background: none;
             text-decoration: none;
             &:before{
                 visibility: visible;
